@@ -1,0 +1,5 @@
+Think twice before connecting to that free public WiFi! It might seem convenient, but it's often a digital minefield. Public networks are usually unsecured. This means hackers can easily snoop on your internet activity. They can see what websites you visit. They can even steal your login details.
+
+Some criminals create fake WiFi hotspots. They look legitimate, like "Free Airport WiFi." But once you connect, they gain access to your device. Your passwords, bank details, and personal photos are all at risk. Imagine someone accessing your social media or emptying your bank account. It's like leaving your front door wide open for thieves.
+
+So, here's your practical tip: Always use a Virtual Private Network, or VPN, or stick to your cellular data when you're out.
