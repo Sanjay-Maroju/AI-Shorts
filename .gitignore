@@ -3,10 +3,17 @@ __pycache__/
 .env
 
 audio/
+assets/
+output/
+videos/
 
 *.mp3
 *.mp4
 
-output/
-videos/
-assets/
+*.log
+.DS_Store
+.vscode/
+
+voice.txt
+voice.vtt
+voice.tsv
