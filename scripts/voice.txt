@@ -1,2 +1,11 @@
-Think twice before connecting to that free public Wi-Fi.
-It might seem convenient, but it's often...
+Think twice before plugging your phone into any public USB charging station.
+It seems super convenient when your battery is low, but these stations are a major security risk.
+Criminals can easily modify them. They can install malicious software.
+This trick is called juice jacking. When you connect your phone,
+that hidden malware can instantly infect your device.
+It can steal all your personal data.
+We're talking passwords, photos, banking details, even your identity.
+Your phone isn't just getting power, it's making a data connection to an unknown computer.
+And that computer might be controlled by hackers.
+It's a huge privacy nightmare waiting to happen.
+To stay safe, always use your own wall charger plugged into an AC outlet or carry a power bank.

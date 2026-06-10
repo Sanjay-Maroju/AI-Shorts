@@ -1,3 +1,12 @@
 start	end	text
-0	3800	Think twice before connecting to that free public Wi-Fi.
-3800	6800	It might seem convenient, but it's often...
+0	4080	Think twice before plugging your phone into any public USB charging station.
+4880	9920	It seems super convenient when your battery is low, but these stations are a major security risk.
+10880	15600	Criminals can easily modify them. They can install malicious software.
+16560	20320	This trick is called juice jacking. When you connect your phone,
+20320	22960	that hidden malware can instantly infect your device.
+23920	25920	It can steal all your personal data.
+26800	30720	We're talking passwords, photos, banking details, even your identity.
+31600	36080	Your phone isn't just getting power, it's making a data connection to an unknown computer.
+36960	39440	And that computer might be controlled by hackers.
+40400	42880	It's a huge privacy nightmare waiting to happen.
+43760	49920	To stay safe, always use your own wall charger plugged into an AC outlet or carry a power bank.

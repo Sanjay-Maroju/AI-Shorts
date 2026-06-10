@@ -44,7 +44,14 @@ command.extend([
 filter_complex = ""
 
 for i in range(8):
-    filter_complex += f"[{i}:v]scale=1080:1920[v{i}];"
+
+    # Slight zoom (5%) with high-resolution scaling
+    filter_complex += (
+        f"[{i}:v]"
+        f"scale=1200:2133,"
+        f"crop=1080:1920"
+        f"[v{i}];"
+    )
 
 concat_inputs = "".join([f"[v{i}]" for i in range(8)])
 
@@ -63,3 +70,5 @@ command.extend([
 ])
 
 subprocess.run(command)
+
+print("Video created successfully!")

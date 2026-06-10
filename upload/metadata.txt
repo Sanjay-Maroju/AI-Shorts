@@ -1,0 +1,17 @@
+TITLE:
+WARNING: Avoid Public USB Chargers (Juice Jacking)
+
+DESCRIPTION:
+Public USB charging stations are a major security risk! Learn about "juice jacking" and how criminals can steal your personal data, passwords, and banking details. Protect your privacy by always using your own wall charger or a power bank.
+
+HASHTAGS:
+#JuiceJacking
+#CyberSecurity
+#Privacy
+#DataSecurity
+#TechTips
+#PhoneSafety
+#ScamAlert
+#PublicCharging
+#IdentityTheft
+#Hackers
