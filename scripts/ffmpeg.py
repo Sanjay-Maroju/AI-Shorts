@@ -1,41 +1,64 @@
+import json
 import subprocess
 
-command = [
-    "ffmpeg",
+# Load subtitle timestamps
+with open("../subtitles/voice.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
 
-    # Images (6.5 sec each)
-    "-loop", "1", "-t", "6.5", "-i", "../assets/scene1.png",
-    "-loop", "1", "-t", "6.5", "-i", "../assets/scene2.png",
-    "-loop", "1", "-t", "6.5", "-i", "../assets/scene3.png",
-    "-loop", "1", "-t", "6.5", "-i", "../assets/scene4.png",
-    "-loop", "1", "-t", "6.5", "-i", "../assets/scene5.png",
-    "-loop", "1", "-t", "6.5", "-i", "../assets/scene6.png",
-    "-loop", "1", "-t", "6.5", "-i", "../assets/scene7.png",
-    "-loop", "1", "-t", "6.5", "-i", "../assets/scene8.png",
+segments = data["segments"]
 
-    # Audio
-    "-i", "../audio/voice.mp3",
+command = ["ffmpeg"]
 
-    # Resize all images and concatenate
-    "-filter_complex",
-    "[0:v]scale=1080:1920[v0];"
-    "[1:v]scale=1080:1920[v1];"
-    "[2:v]scale=1080:1920[v2];"
-    "[3:v]scale=1080:1920[v3];"
-    "[4:v]scale=1080:1920[v4];"
-    "[5:v]scale=1080:1920[v5];"
-    "[6:v]scale=1080:1920[v6];"
-    "[7:v]scale=1080:1920[v7];"
-    "[v0][v1][v2][v3][v4][v5][v6][v7]concat=n=8:v=1:a=0[v]",
+# Add images with durations from voice.json
+scene_ranges = [
+    (0,1),
+    (2,3),
+    (4,5),
+    (6,7),
+    (8,9),
+    (10,11),
+    (12,12),
+    (13,13)
+]
 
+for i, (start_idx, end_idx) in enumerate(scene_ranges, start=1):
+
+    duration = (
+        segments[end_idx]["end"]
+        - segments[start_idx]["start"]
+    )
+
+    command.extend([
+        "-loop", "1",
+        "-t", str(duration),
+        "-i", f"../assets/scene{i}.png"
+    ])
+
+# Audio
+command.extend([
+    "-i", "../audio/voice.mp3"
+])
+
+# Build filter_complex
+filter_complex = ""
+
+for i in range(8):
+    filter_complex += f"[{i}:v]scale=1080:1920[v{i}];"
+
+concat_inputs = "".join([f"[v{i}]" for i in range(8)])
+
+filter_complex += f"{concat_inputs}concat=n=8:v=1:a=0[v]"
+
+command.extend([
+    "-filter_complex", filter_complex,
     "-map", "[v]",
     "-map", "8:a",
-
     "-c:v", "libx264",
     "-c:a", "aac",
     "-pix_fmt", "yuv420p",
-
+    "-shortest",
+    "-y",
     "../output/final_short.mp4"
-]
+])
 
 subprocess.run(command)
