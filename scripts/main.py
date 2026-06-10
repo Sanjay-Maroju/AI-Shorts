@@ -1,12 +1,24 @@
-import os
+import subprocess
 
-print("Generating script...")
-os.system("python script_generator.py")
+print("\nGenerating script...")
+subprocess.run(["python", "script_generator.py"])
 
-print("Generating voice...")
-os.system("python voice.py")
+print("\nGenerating voice...")
+subprocess.run(["python", "voice.py"])
 
-print("Generating subtitles...")
-os.system("python -m whisper ../audio/voice.mp3 --model base")
+print("\nGenerating scene prompts...")
+subprocess.run(["python", "scene_generator.py"])
 
-print("DONE!")
+print("\nGenerating images...")
+subprocess.run(["python", "image_generator.py"])
+
+print("\nCreating video...")
+subprocess.run(["python", "ffmpeg.py"])
+
+print("\nBurning subtitles...")
+subprocess.run(["python", "burn_subtitles.py"])
+
+print("\nAdding background music...")
+subprocess.run(["python", "add_bgm.py"])
+
+print("\nDone! Upload-ready video created.")

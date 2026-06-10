@@ -1,9 +1,15 @@
 from google import genai
+from dotenv import load_dotenv
 import os
+import time
+
+# Load .env file
+load_dotenv("../.env")
 
 client = genai.Client(
     api_key=os.getenv("GEMINI_API_KEY")
 )
+
 topic = input("Enter topic: ")
 
 prompt = f"""
@@ -37,14 +43,23 @@ Requirements:
 Return ONLY plain text.
 """
 
-response = client.models.generate_content(
-    model="gemini-2.5-flash",
-    contents=prompt
-)
+# Retry if Gemini is busy
+for attempt in range(5):
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt
+        )
+        break
+
+    except Exception as e:
+        print("Gemini busy, retrying in 10 seconds...")
+        time.sleep(10)
 
 script = response.text
 
 with open("script.txt", "w", encoding="utf-8") as f:
     f.write(script)
 
+print("\nScript generated successfully!\n")
 print(script)
