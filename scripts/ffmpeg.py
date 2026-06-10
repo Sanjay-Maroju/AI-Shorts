@@ -9,18 +9,19 @@ segments = data["segments"]
 
 command = ["ffmpeg"]
 
-# Add images with durations from voice.json
+# Map 14 segments to 8 scenes
 scene_ranges = [
-    (0,1),
-    (2,3),
-    (4,5),
-    (6,7),
-    (8,9),
-    (10,11),
-    (12,12),
-    (13,13)
+    (0, 1),
+    (2, 3),
+    (4, 5),
+    (6, 7),
+    (8, 9),
+    (10, 11),
+    (12, 12),
+    (13, 13)
 ]
 
+# Add image inputs with durations
 for i, (start_idx, end_idx) in enumerate(scene_ranges, start=1):
 
     duration = (
@@ -39,7 +40,7 @@ command.extend([
     "-i", "../audio/voice.mp3"
 ])
 
-# Build filter_complex
+# Build filter graph
 filter_complex = ""
 
 for i in range(8):
